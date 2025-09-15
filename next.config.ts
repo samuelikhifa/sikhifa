@@ -2,23 +2,23 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    serverComponentsExternalPackages: ['cloudinary']
+    serverComponentsExternalPackages: ["cloudinary"],
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
   api: {
     bodyParser: {
-      sizeLimit: '10mb'
-    }
-  }
+      sizeLimit: "10mb",
+    },
+  },
 };
 
 export default nextConfig;

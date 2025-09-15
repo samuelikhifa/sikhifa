@@ -1,30 +1,46 @@
-import { Metadata } from 'next';
-import { User, Award, Briefcase, MapPin, Mail, Phone, Linkedin, Github,  ArrowRight, Users, Zap, Heart } from 'lucide-react';
+import { Metadata } from "next";
+import {
+  User,
+  Award,
+  Briefcase,
+  MapPin,
+  Mail,
+  Phone,
+  Linkedin,
+  Github,
+  ArrowRight,
+  Users,
+  Zap,
+  Heart,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'About - Samuel Ikhifa | Web Developer & SEO Specialist',
-  description: 'Learn more about Samuel Ikhifa, a passionate Web Developer and SEO Specialist from Nigeria. Discover my journey, skills, and approach to creating exceptional digital experiences.',
-  keywords: 'About, Samuel Ikhifa, Web Developer, SEO Specialist, Nigeria, Portfolio, Experience',
+  title: "About - Samuel Ikhifa | Web Developer & SEO Specialist",
+  description:
+    "Learn more about Samuel Ikhifa, a passionate Web Developer and SEO Specialist from Nigeria. Discover my journey, skills, and approach to creating exceptional digital experiences.",
+  keywords:
+    "About, Samuel Ikhifa, Web Developer, SEO Specialist, Nigeria, Portfolio, Experience",
   openGraph: {
-    title: 'About - Samuel Ikhifa | Web Developer & SEO Specialist',
-    description: 'Learn more about Samuel Ikhifa, a passionate Web Developer and SEO Specialist from Nigeria. Discover my journey, skills, and approach to creating exceptional digital experiences.',
-    url: 'https://samuelikhifa.com/about',
-    siteName: 'Samuel Ikhifa Portfolio',
+    title: "About - Samuel Ikhifa | Web Developer & SEO Specialist",
+    description:
+      "Learn more about Samuel Ikhifa, a passionate Web Developer and SEO Specialist from Nigeria. Discover my journey, skills, and approach to creating exceptional digital experiences.",
+    url: "https://samuelikhifa.com/about",
+    siteName: "Samuel Ikhifa Portfolio",
     images: [
       {
-        url: '/og-image.png',
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: 'Samuel Ikhifa Portfolio',
+        alt: "Samuel Ikhifa Portfolio",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   alternates: {
-    canonical: 'https://samuelikhifa.com/about',
+    canonical: "https://samuelikhifa.com/about",
   },
-}
+};
 
 const skills = [
   // { name: "UI/UX Design", level: 70 },
@@ -34,7 +50,7 @@ const skills = [
   { name: "UI/UX Design", level: 70 },
   { name: "Prototyping", level: 92 },
   // { name: "User Research", level: 60 },
-  { name: "Version Control (Git/GitHub)", level: 75 }
+  { name: "Version Control (Git/GitHub)", level: 75 },
 ];
 
 const experience = [
@@ -42,14 +58,16 @@ const experience = [
     year: "2025 - Present",
     title: "Frontend Developer & SEO Specialist",
     company: "Legacy54",
-    description: "Building and optimizing Legacy54’s sports platform with a focus on responsive web development and SEO best practices, ensuring speed, performance, and discoverability while delivering a smooth user experience."
+    description:
+      "Building and optimizing Legacy54’s sports platform with a focus on responsive web development and SEO best practices, ensuring speed, performance, and discoverability while delivering a smooth user experience.",
   },
   {
     year: "2024 - Present",
     title: "Frontend Developer & UI/UX Designer",
     company: "JCIN UNIBEN",
-    description: "Designed and developed the official JCIN UNIBEN website, ensuring a responsive layout, modern UI, and improved performance across devices."
-  }
+    description:
+      "Designed and developed the official JCIN UNIBEN website, ensuring a responsive layout, modern UI, and improved performance across devices.",
+  },
   // {
   //   year: "2019 - 2021",
   //   title: "Junior Designer",
@@ -62,18 +80,19 @@ const values = [
   {
     icon: Users,
     title: "User-Centered",
-    description: "Every design decision is based on user needs and research."
+    description: "Every design decision is based on user needs and research.",
   },
   {
     icon: Zap,
     title: "Innovation",
-    description: "Constantly exploring new technologies and design trends."
+    description: "Constantly exploring new technologies and design trends.",
   },
   {
     icon: Heart,
     title: "Passion",
-    description: "Genuine love for creating beautiful and functional experiences."
-  }
+    description:
+      "Genuine love for creating beautiful and functional experiences.",
+  },
 ];
 
 export default function AboutPage() {
@@ -87,14 +106,15 @@ export default function AboutPage() {
         <div className="absolute top-12 left-16 w-3 h-0.5 bg-white opacity-50"></div>
         <div className="absolute top-6 right-32 w-2 h-2 bg-white rounded-full opacity-60"></div>
         <div className="absolute top-10 right-20 w-1 h-1 bg-white rounded-full opacity-40"></div>
-        
+
         <div className="container mx-auto px-6 py-16">
           <div className="text-center text-white">
             <h1 className="font-poppins text-5xl md:text-7xl font-bold mb-6">
               About Me
             </h1>
             <p className="text-xl md:text-2xl text-lime-100 max-w-3xl mx-auto leading-relaxed">
-            Building high-performance websites where design meets speed, usability, and discoverability.
+              Building high-performance websites where design meets speed,
+              usability, and discoverability.
             </p>
           </div>
         </div>
@@ -110,7 +130,12 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                What began as an interest in creative problem-solving grew into a commitment to building websites that don’t just look good — they perform, convert, and scale. I believe every digital product should balance design, functionality, and discoverability, and that’s where my work lives: the intersection of frontend engineering and SEO strategy.
+                  What began as an interest in creative problem-solving grew
+                  into a commitment to building websites that don’t just look
+                  good — they perform, convert, and scale. I believe every
+                  digital product should balance design, functionality, and
+                  discoverability, and that’s where my work lives: the
+                  intersection of frontend engineering and SEO strategy.
                 </p>
                 {/* <p>
                   With over 4 years of experience in the digital design industry, I've had the privilege 
@@ -124,8 +149,6 @@ export default function AboutPage() {
                 </p> */}
               </div>
             </div>
-            
-
           </div>
         </div>
       </section>
@@ -138,7 +161,8 @@ export default function AboutPage() {
               Skills & Expertise
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A comprehensive skill set that combines design thinking with technical implementation
+              A comprehensive skill set that combines design thinking with
+              technical implementation
             </p>
           </div>
 
@@ -147,11 +171,15 @@ export default function AboutPage() {
               {skills.slice(0, 3).map((skill, index) => (
                 <div key={skill.name}>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-semibold text-gray-900">{skill.name}</span>
-                    <span className="text-sm text-gray-600">{skill.level}%</span>
+                    <span className="font-semibold text-gray-900">
+                      {skill.name}
+                    </span>
+                    <span className="text-sm text-gray-600">
+                      {skill.level}%
+                    </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
+                    <div
                       className="bg-gradient-to-r from-lime-500 to-purple-600 h-2 rounded-full transition-all duration-1000"
                       style={{ width: `${skill.level}%` }}
                     ></div>
@@ -159,16 +187,20 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-            
+
             <div className="space-y-6">
               {skills.slice(3).map((skill, index) => (
                 <div key={skill.name}>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-semibold text-gray-900">{skill.name}</span>
-                    <span className="text-sm text-gray-600">{skill.level}%</span>
+                    <span className="font-semibold text-gray-900">
+                      {skill.name}
+                    </span>
+                    <span className="text-sm text-gray-600">
+                      {skill.level}%
+                    </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
+                    <div
                       className="bg-gradient-to-r from-lime-500 to-purple-600 h-2 rounded-full transition-all duration-1000"
                       style={{ width: `${skill.level}%` }}
                     ></div>
@@ -208,8 +240,12 @@ export default function AboutPage() {
                     <h3 className="font-poppins text-xl font-bold text-gray-900 mb-1">
                       {exp.title}
                     </h3>
-                    <p className="text-purple-600 font-medium mb-3">{exp.company}</p>
-                    <p className="text-gray-600 leading-relaxed">{exp.description}</p>
+                    <p className="text-purple-600 font-medium mb-3">
+                      {exp.company}
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {exp.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -239,16 +275,12 @@ export default function AboutPage() {
                 <h3 className="font-poppins text-xl font-bold text-gray-900 mb-2">
                   {value.title}
                 </h3>
-                <p className="text-gray-600">
-                  {value.description}
-                </p>
+                <p className="text-gray-600">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-    
     </div>
   );
 }

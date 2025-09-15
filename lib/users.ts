@@ -14,11 +14,11 @@ const users: User[] = [];
 
 export const userStore = {
   // Add a new user
-  create: (user: Omit<User, 'id' | 'createdAt'>) => {
+  create: (user: Omit<User, "id" | "createdAt">) => {
     const newUser: User = {
       ...user,
       id: Date.now().toString(),
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
     users.push(newUser);
     return newUser;
@@ -26,21 +26,21 @@ export const userStore = {
 
   // Find user by email
   findByEmail: (email: string) => {
-    return users.find(user => user.email === email);
+    return users.find((user) => user.email === email);
   },
 
   // Find user by ID
   findById: (id: string) => {
-    return users.find(user => user.id === id);
+    return users.find((user) => user.id === id);
   },
 
   // Get all users (for debugging)
   getAll: () => {
-    return users.map(user => ({ ...user, password: '[HIDDEN]' }));
+    return users.map((user) => ({ ...user, password: "[HIDDEN]" }));
   },
 
   // Check if user exists
   exists: (email: string) => {
-    return users.some(user => user.email === email);
-  }
-}; 
+    return users.some((user) => user.email === email);
+  },
+};

@@ -106,6 +106,7 @@ ADMIN_PASSWORD=your-secure-password
 ### Customizing Dashboard
 
 Edit `/app/admin/dashboard/page.tsx` to add:
+
 - More analytics
 - Content management features
 - Portfolio editing capabilities
@@ -132,7 +133,7 @@ Edit `/app/admin/dashboard/page.tsx` to add:
 Add console logs to API routes for debugging:
 
 ```typescript
-console.log('Auth attempt:', { email, success: data.success });
+console.log("Auth attempt:", { email, success: data.success });
 ```
 
 ## 📝 Notes
@@ -140,4 +141,4 @@ console.log('Auth attempt:', { email, success: data.success });
 - The authentication system is designed for single-user access (developer/owner)
 - No user registration - credentials are set via environment variables
 - All sensitive operations require authentication
-- The system is ready for production with proper environment configuration 
+- The system is ready for production with proper environment configuration

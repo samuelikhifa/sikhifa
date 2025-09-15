@@ -1,14 +1,14 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   // Check if the request is for admin routes
-  if (request.nextUrl.pathname.startsWith('/admin')) {
-    const token = request.cookies.get('auth-token')?.value;
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    const token = request.cookies.get("auth-token")?.value;
 
     // If no token, redirect to login
     if (!token) {
-      return NextResponse.redirect(new URL('/login', request.url));
+      return NextResponse.redirect(new URL("/login", request.url));
     }
 
     // You could add additional token verification here if needed
@@ -27,6 +27,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
-}; 
+};

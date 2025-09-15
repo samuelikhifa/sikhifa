@@ -1,7 +1,15 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { MessageCircle, Mail, Calendar, User, Trash2, CheckCircle, Eye } from 'lucide-react';
+import { useState, useEffect } from "react";
+import {
+  MessageCircle,
+  Mail,
+  Calendar,
+  User,
+  Trash2,
+  CheckCircle,
+  Eye,
+} from "lucide-react";
 
 interface Message {
   id: number;
@@ -15,7 +23,7 @@ interface Message {
 export default function MessagesPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchMessages();
@@ -23,16 +31,16 @@ export default function MessagesPage() {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('/api/messages');
+      const response = await fetch("/api/messages");
       const data = await response.json();
-      
+
       if (data.success) {
         setMessages(data.data || []);
       } else {
-        setError('Failed to fetch messages');
+        setError("Failed to fetch messages");
       }
     } catch (error) {
-      setError('Failed to fetch messages');
+      setError("Failed to fetch messages");
     } finally {
       setLoading(false);
     }
@@ -40,19 +48,17 @@ export default function MessagesPage() {
 
   const markAsRead = async (messageId: number) => {
     // In a real app, this would make an API call
-    setMessages(prev => 
-      prev.map(msg => 
-        msg.id === messageId ? { ...msg, read: true } : msg
-      )
+    setMessages((prev) =>
+      prev.map((msg) => (msg.id === messageId ? { ...msg, read: true } : msg))
     );
   };
 
   const deleteMessage = async (messageId: number) => {
     // In a real app, this would make an API call
-    setMessages(prev => prev.filter(msg => msg.id !== messageId));
+    setMessages((prev) => prev.filter((msg) => msg.id !== messageId));
   };
 
-  const unreadCount = messages.filter(msg => !msg.read).length;
+  const unreadCount = messages.filter((msg) => !msg.read).length;
 
   if (loading) {
     return (
@@ -78,7 +84,8 @@ export default function MessagesPage() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="bg-lime-100 text-lime-800 px-4 py-2 rounded-lg">
-                <span className="font-semibold">{messages.length}</span> total messages
+                <span className="font-semibold">{messages.length}</span> total
+                messages
               </div>
               {unreadCount > 0 && (
                 <div className="bg-red-100 text-red-800 px-4 py-2 rounded-lg">
@@ -101,8 +108,12 @@ export default function MessagesPage() {
         {messages.length === 0 ? (
           <div className="text-center py-20">
             <MessageCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No messages yet</h3>
-            <p className="text-gray-600">Messages from your contact form will appear here.</p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              No messages yet
+            </h3>
+            <p className="text-gray-600">
+              Messages from your contact form will appear here.
+            </p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -110,7 +121,7 @@ export default function MessagesPage() {
               <div
                 key={message.id}
                 className={`bg-white rounded-2xl shadow-sm border-l-4 ${
-                  message.read ? 'border-gray-200' : 'border-lime-500'
+                  message.read ? "border-gray-200" : "border-lime-500"
                 } p-6 hover:shadow-md transition-shadow`}
               >
                 <div className="flex items-start justify-between">
@@ -118,7 +129,9 @@ export default function MessagesPage() {
                     <div className="flex items-center space-x-3 mb-3">
                       <div className="flex items-center space-x-2">
                         <User className="w-5 h-5 text-gray-400" />
-                        <span className="font-semibold text-gray-900">{message.name}</span>
+                        <span className="font-semibold text-gray-900">
+                          {message.name}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Mail className="w-4 h-4 text-gray-400" />
@@ -136,11 +149,11 @@ export default function MessagesPage() {
                         </span>
                       )}
                     </div>
-                    
+
                     <p className="text-gray-700 leading-relaxed mb-4">
                       {message.message}
                     </p>
-                    
+
                     <div className="flex items-center space-x-3">
                       {!message.read && (
                         <button
@@ -168,4 +181,4 @@ export default function MessagesPage() {
       </div>
     </div>
   );
-} 
+}
