@@ -8,7 +8,9 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-export class PersistentStorage<T> {
+type IdType = number | string;
+
+export class PersistentStorage<T extends { id: IdType }, K extends IdType = T["id"]> {
   private filePath: string;
   private data: T[];
 
@@ -21,7 +23,7 @@ export class PersistentStorage<T> {
     try {
       if (fs.existsSync(this.filePath)) {
         const fileContent = fs.readFileSync(this.filePath, "utf-8");
-        return JSON.parse(fileContent);
+        return JSON.parse(fileContent) as T[];
       }
     } catch (error) {
       console.error(`Error loading data from ${this.filePath}:`, error);
@@ -44,23 +46,32 @@ export class PersistentStorage<T> {
     return [...this.data];
   }
 
-  getById(id: any): T | undefined {
-    return this.data.find((item: any) => item.id === id);
+  getById(id: K): T | undefined {
+    return this.data.find((item) => item.id === id);
   }
 
-  create(item: Omit<T, "id"> & { id?: any }): T {
-    const newItem = {
-      ...item,
-      id: item.id || this.generateId(),
-    } as T;
+  // Overloads allow passing a fully-typed T (with id) or an object missing id
+  create(item: Omit<T, "id">): T;
+  create(item: T): T;
+  create(item: Omit<T, "id"> | T): T {
+    let newItem: T;
+    if ("id" in (item as T)) {
+      newItem = item as T;
+    } else {
+      const withId = {
+        ...(item as Omit<T, "id">),
+        id: this.generateId() as K,
+      } as unknown as T;
+      newItem = withId;
+    }
 
     this.data.push(newItem);
     this.saveData(this.data);
     return newItem;
   }
 
-  update(id: any, updates: Partial<T>): T | null {
-    const index = this.data.findIndex((item: any) => item.id === id);
+  update(id: K, updates: Partial<T>): T | null {
+    const index = this.data.findIndex((item) => item.id === id);
     if (index === -1) return null;
 
     this.data[index] = { ...this.data[index], ...updates };
@@ -68,8 +79,8 @@ export class PersistentStorage<T> {
     return this.data[index];
   }
 
-  delete(id: any): boolean {
-    const index = this.data.findIndex((item: any) => item.id === id);
+  delete(id: K): boolean {
+    const index = this.data.findIndex((item) => item.id === id);
     if (index === -1) return false;
 
     this.data.splice(index, 1);
@@ -77,17 +88,18 @@ export class PersistentStorage<T> {
     return true;
   }
 
-  private generateId(): number | string {
-    const ids = this.data.map((item: any) => item.id);
+  private generateId(): K {
+    const ids = this.data.map((item) => item.id);
 
     // If we have string IDs, generate a timestamp-based string ID
     if (ids.length > 0 && typeof ids[0] === "string") {
-      return Date.now().toString();
+      return Date.now().toString() as K;
     }
 
     // Otherwise generate numeric ID
-    const numericIds = ids.filter((id) => typeof id === "number");
-    return numericIds.length > 0 ? Math.max(...numericIds) + 1 : 1;
+    const numericIds = ids.filter((id): id is number => typeof id === "number");
+    const nextId = numericIds.length > 0 ? (Math.max(...numericIds) + 1) : 1;
+    return nextId as K;
   }
 
   // Custom methods for specific data types

@@ -12,7 +12,6 @@ import {
   Award,
   Zap,
 } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact - Samuel Ikhifa | Get In Touch",
@@ -49,7 +48,6 @@ const contactInfo = [
     value: "ikhifasamuel12@gmail.com",
     link: "mailto:ikhifasamuel12@gmail.com",
   },
-
   {
     icon: Phone,
     title: "Phone",
@@ -86,9 +84,108 @@ export default function ContactPage() {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+            {/* Contact Form with FormSubmit */}
             <div>
-              <ContactForm />
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h2 className="font-poppins text-2xl font-bold text-gray-900 mb-6">
+                  Send me a message
+                </h2>
+                
+                <form 
+                  action="https://formsubmit.co/ikhifasamuel12@gmail.com" 
+                  method="POST"
+                  className="space-y-6"
+                >
+                  {/* Hidden FormSubmit configurations */}
+                  <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_next" value="https://samuelikhifa.com/contact/thank-you" />
+                  <input type="hidden" name="_template" value="table" />
+                  
+                  {/* Name Field */}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+
+                  {/* Email Field */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors"
+                      placeholder="Enter your email address"
+                    />
+                  </div>
+
+                  {/* Phone Field */}
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+
+                  {/* Subject Field */}
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                      Subject *
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+
+                  {/* Message Field */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors resize-vertical"
+                      placeholder="Tell me about your project or inquiry..."
+                    ></textarea>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="w-full bg-lime-500 hover:bg-lime-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <Send className="w-5 h-5" />
+                    <span>Send Message</span>
+                  </button>
+                </form>
+              </div>
             </div>
 
             {/* Contact Information */}
@@ -129,6 +226,18 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Additional Info */}
+              <div className="bg-lime-50 rounded-xl p-6">
+                <div className="flex items-center space-x-3 mb-4">
+                  <Clock className="w-6 h-6 text-lime-600" />
+                  <h3 className="font-semibold text-gray-900">Response Time</h3>
+                </div>
+                <p className="text-gray-600">
+                  I typically respond within 24 hours. For urgent matters, 
+                  feel free to call me directly.
+                </p>
               </div>
             </div>
           </div>
