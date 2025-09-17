@@ -394,7 +394,7 @@ export default function AdminDashboard() {
             {/* Welcome Section */}
             <div className="bg-gradient-to-r from-lime-500 to-purple-600 rounded-2xl p-8 text-white">
               <h1 className="text-3xl font-bold mb-2">Welcome back, {user?.email}!</h1>
-              <p className="text-lime-100">Here's what's happening with your portfolio today.</p>
+              <p className="text-lime-100">Here&apos;s what&apos;s happening with your portfolio today.</p>
             </div>
 
             {/* Stats Cards */}

@@ -4,20 +4,24 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Briefcase, LayoutGrid, Search,  Globe2, ExternalLink, Calendar, Tag } from 'lucide-react';
+import { Briefcase, ExternalLink, Calendar, Tag } from 'lucide-react';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
-const categories = [
-  { id: 'all', name: 'All Projects', icon: LayoutGrid },
-  { id: 'UI/UX Design', name: 'UI/UX Design', icon: LayoutGrid },
-  { id: 'Web Development', name: 'Web Development', icon: Globe2 },
-  { id: 'SEO', name: 'SEO Optimization', icon: Search }
-
-  // { id: 'App Design', name: 'App Design', icon: Layers }
-];
+type Project = {
+  id: number | string;
+  title: string;
+  category: string;
+  description: string;
+  imageUrl?: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  technologies?: string | string[];
+  status: 'active' | 'completed' | 'draft';
+  createdAt?: string | number | Date;
+};
 
 export default function PortfolioPage() {
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +31,7 @@ export default function PortfolioPage() {
       .then(res => res.json())
       .then(data => {
         console.log('Projects API response:', data); // Debug log
-        setProjects(data.data || []);
+        setProjects((data.data as Project[]) || []);
         setLoading(false);
       })
       .catch((error) => {
@@ -167,7 +171,7 @@ export default function PortfolioPage() {
                         </div>
                         <div className="flex items-center space-x-1">
                           <Calendar className="w-4 h-4" />
-                          <span>{new Date(project.createdAt).getFullYear()}</span>
+                          <span>{project.createdAt ? new Date(project.createdAt).getFullYear() : ''}</span>
                         </div>
                       </div>
                       
