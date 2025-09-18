@@ -2,15 +2,8 @@ import { Metadata } from "next";
 import {
   Mail,
   Phone,
-  MapPin,
   Clock,
-  MessageCircle,
   Send,
-  ArrowRight,
-  CheckCircle,
-  Users,
-  Award,
-  Zap,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -74,7 +67,7 @@ export default function ContactPage() {
               Get In Touch
             </h1>
             <p className="text-xl md:text-2xl text-lime-100 max-w-3xl mx-auto leading-relaxed">
-              Let's discuss your project and bring your ideas to life
+              Let&apos;s discuss your project and bring your ideas to life
             </p>
           </div>
         </div>
@@ -157,7 +150,7 @@ export default function ContactPage() {
                       name="subject"
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors"
-                      placeholder="What's this about?"
+                      placeholder="What&apos;s this about?"
                     />
                   </div>
 
@@ -192,19 +185,19 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="font-poppins text-3xl font-bold text-gray-900 mb-6">
-                  Let's Connect
+                  Let&apos;s Connect
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  I'm always excited to work on new projects and collaborate
+                  I&apos;m always excited to work on new projects and collaborate
                   with amazing people. Whether you have a specific project in
-                  mind or just want to chat about possibilities, I'd love to
+                  mind or just want to chat about possibilities, I&apos;d love to
                   hear from you.
                 </p>
               </div>
 
               {/* Contact Details */}
               <div className="space-y-4">
-                {contactInfo.map((info, index) => (
+                {contactInfo.map((info) => (
                   <div key={info.title} className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-lime-100 rounded-lg flex items-center justify-center">
                       <info.icon className="w-6 h-6 text-lime-600" />
