@@ -11,7 +11,7 @@ interface ContactFormProps {
 export default function ContactForm({ 
   className = '', 
   title = "Send me a message",
-  subtitle = "I'd love to hear from you. Let's discuss your project!"
+  subtitle = "I&apos;d love to hear from you. Let&apos;s discuss your project!"
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
@@ -46,6 +46,7 @@ export default function ContactForm({
         setError(data.message || 'Failed to send message');
       }
     } catch (error) {
+      console.error('Contact form submit error:', error);
       setError('Failed to send message. Please try again.');
     } finally {
       setLoading(false);
@@ -84,7 +85,7 @@ export default function ContactForm({
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-green-800">
-                Message sent successfully! I'll get back to you soon.
+                Message sent successfully! I&apos;ll get back to you soon.
               </p>
             </div>
           </div>

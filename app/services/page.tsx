@@ -3,9 +3,6 @@ import {
   Code2,
   PenTool,
   Search,
-  Zap,
-  Smartphone as Layers,
-  ArrowRight,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -142,7 +139,7 @@ export default function ServicesPage() {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <div
                 key={service.title}
                 className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 group"
@@ -164,7 +161,7 @@ export default function ServicesPage() {
                 </p>
 
                 <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
+                  {service.features.map((feature) => (
                     <li
                       key={feature}
                       className="flex items-center space-x-3 text-sm text-gray-700"

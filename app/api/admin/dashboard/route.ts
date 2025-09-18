@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
 
-// Middleware function to verify authentication
 function verifyAuth(request: NextRequest) {
   const token = request.cookies.get("auth-token")?.value;
 
@@ -13,15 +12,23 @@ function verifyAuth(request: NextRequest) {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    type TokenPayload = {
+      email?: string;
+      role?: string;
+      exp?: number;
+      iat?: number;
+      [key: string]: unknown;
+    };
+    const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
 
-    // Check if token is expired
+
     if (decoded.exp && decoded.exp < Math.floor(Date.now() / 1000)) {
       return null;
     }
 
     return decoded;
   } catch (error) {
+    console.error("verifyAuth error:", error);
     return null;
   }
 }
@@ -37,7 +44,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // This is the protected admin data
+
     const dashboardData = {
       totalProjects: 275,
       happyClients: 254,

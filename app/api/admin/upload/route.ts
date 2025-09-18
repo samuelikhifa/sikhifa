@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import cloudinary from "../../../../lib/cloudinary";
+import type { UploadApiErrorResponse, UploadApiResponse } from "cloudinary";
 
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
@@ -14,7 +15,14 @@ function verifyAuth(request: NextRequest) {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    type TokenPayload = {
+      email?: string;
+      role?: string;
+      exp?: number;
+      iat?: number;
+      [key: string]: unknown;
+    };
+    const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
 
     // Check if token is expired
     if (decoded.exp && decoded.exp < Math.floor(Date.now() / 1000)) {
@@ -23,6 +31,7 @@ function verifyAuth(request: NextRequest) {
 
     return decoded;
   } catch (error) {
+    console.error("verifyAuth error:", error);
     return null;
   }
 }
@@ -75,7 +84,7 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise<UploadApiResponse>((resolve, reject) => {
       cloudinary.uploader
         .upload_stream(
           {
@@ -86,12 +95,10 @@ export async function POST(request: NextRequest) {
               { quality: "auto" },
             ],
           },
-          (error, result) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(result);
-            }
+          (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
+            if (error) return reject(error);
+            if (!result) return reject(new Error("Cloudinary upload returned no result"));
+            resolve(result);
           }
         )
         .end(buffer);
@@ -100,10 +107,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: {
-        url: (result as any).secure_url,
-        public_id: (result as any).public_id,
-        width: (result as any).width,
-        height: (result as any).height,
+        url: result.secure_url,
+        public_id: result.public_id,
+        width: result.width,
+        height: result.height,
       },
       message: "Image uploaded successfully",
     });

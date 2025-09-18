@@ -14,7 +14,14 @@ function verifyAuth(request: NextRequest) {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    type TokenPayload = {
+      email?: string;
+      role?: string;
+      exp?: number;
+      iat?: number;
+      [key: string]: unknown;
+    };
+    const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
 
     // Check if token is expired
     if (decoded.exp && decoded.exp < Math.floor(Date.now() / 1000)) {
@@ -23,6 +30,7 @@ function verifyAuth(request: NextRequest) {
 
     return decoded;
   } catch (error) {
+    console.error("verifyAuth error:", error);
     return null;
   }
 }

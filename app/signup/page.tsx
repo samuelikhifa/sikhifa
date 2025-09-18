@@ -66,6 +66,7 @@ export default function SignupPage() {
         setError(data.message || "Signup failed");
       }
     } catch (error) {
+      console.error("Signup error:", error);
       setError("An error occurred during signup");
     } finally {
       setLoading(false);
