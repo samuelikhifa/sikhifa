@@ -59,7 +59,7 @@ const experience = [
     title: "Frontend Developer & SEO Specialist",
     company: "Legacy54",
     description:
-      "Building and optimizing Legacy54’s sports platform with a focus on responsive web development and SEO best practices, ensuring speed, performance, and discoverability while delivering a smooth user experience.",
+      "Building and optimizing Legacy54&rsquo;s sports platform with a focus on responsive web development and SEO best practices, ensuring speed, performance, and discoverability while delivering a smooth user experience.",
   },
   {
     year: "2024 - Present",
@@ -131,10 +131,10 @@ export default function AboutPage() {
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
                   What began as an interest in creative problem-solving grew
-                  into a commitment to building websites that don’t just look
+                  into a commitment to building websites that don&rsquo;t just look
                   good — they perform, convert, and scale. I believe every
                   digital product should balance design, functionality, and
-                  discoverability, and that’s where my work lives: the
+                  discoverability, and that&rsquo;s where my work lives: the
                   intersection of frontend engineering and SEO strategy.
                 </p>
                 {/* <p>
@@ -168,7 +168,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
-              {skills.slice(0, 3).map((skill, index) => (
+              {skills.slice(0, 3).map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-900">
@@ -189,7 +189,7 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-6">
-              {skills.slice(3).map((skill, index) => (
+              {skills.slice(3).map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-900">
@@ -267,7 +267,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
+            {values.map((value) => (
               <div key={value.title} className="text-center">
                 <div className="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <value.icon className="w-8 h-8 text-lime-600" />

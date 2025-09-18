@@ -8,14 +8,12 @@ import {
   ExternalLink,
   Github,
   Calendar,
-  Tag,
   Globe,
   Code,
   Palette,
   Smartphone,
   Monitor,
   Zap,
-  Users,
   Clock,
 } from "lucide-react";
 import LoadingSpinner from "../../../components/LoadingSpinner";
@@ -53,6 +51,7 @@ export default function ProjectDetailPage() {
           setError("Project not found");
         }
       } catch (error) {
+        console.error("Fetch project error:", error);
         setError("Failed to load project");
       } finally {
         setLoading(false);

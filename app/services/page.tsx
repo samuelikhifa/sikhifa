@@ -129,7 +129,7 @@ export default function ServicesPage() {
             </h1>
             <p className="text-xl md:text-2xl text-lime-100 max-w-3xl mx-auto leading-relaxed">
               Helping brands and products thrive through design and development
-              that’s simple, modern, and impactful.
+              that&rsquo;s simple, modern, and impactful.
             </p>
           </div>
         </div>

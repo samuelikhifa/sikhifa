@@ -22,7 +22,7 @@ type Project = {
 
 export default function PortfolioPage() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [filter, setFilter] = useState('all');
+  const [filter] = useState('all');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -171,7 +171,7 @@ export default function PortfolioPage() {
                         </div>
                         <div className="flex items-center space-x-1">
                           <Calendar className="w-4 h-4" />
-                          <span>{project.createdAt ? new Date(project.createdAt).getFullYear() : ''}</span>
+                          <span>{project.createdAt ? new Date(project.createdAt).getFullYear() : ""}</span>
                         </div>
                       </div>
                       
