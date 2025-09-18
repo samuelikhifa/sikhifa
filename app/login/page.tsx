@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -33,6 +34,7 @@ export default function LoginPage() {
         setError(data.message || "Login failed");
       }
     } catch (error) {
+      console.error("Login error:", error);
       setError("An error occurred during login");
     } finally {
       setLoading(false);
@@ -101,17 +103,17 @@ export default function LoginPage() {
 
         <div className="mt-6 text-center">
           <p className="text-gray-600 text-sm mb-2">
-            Don't have an account?{" "}
-            <a
+            Don&apos;t have an account?{" "}
+            <Link
               href="/signup"
               className="text-purple-600 hover:text-purple-700 font-medium"
             >
               Create Account
-            </a>
+            </Link>
           </p>
-          <a href="/" className="text-purple-600 hover:text-purple-700 text-sm">
+          <Link href="/" className="text-purple-600 hover:text-purple-700 text-sm">
             ← Back to Portfolio
-          </a>
+          </Link>
         </div>
       </div>
     </div>

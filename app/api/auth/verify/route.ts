@@ -16,7 +16,14 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-      const decoded = jwt.verify(token, JWT_SECRET) as any;
+      type TokenPayload = {
+        email?: string;
+        role?: string;
+        exp?: number;
+        iat?: number;
+        [key: string]: unknown;
+      };
+      const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
 
       // Check if token is expired
       if (decoded.exp && decoded.exp < Math.floor(Date.now() / 1000)) {
@@ -34,6 +41,7 @@ export async function GET(request: NextRequest) {
         },
       });
     } catch (jwtError) {
+      console.error("JWT verify error:", jwtError);
       return NextResponse.json(
         { authenticated: false, message: "Invalid token" },
         { status: 401 }

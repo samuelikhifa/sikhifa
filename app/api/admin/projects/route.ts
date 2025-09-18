@@ -5,6 +5,14 @@ import { projectStore } from "../../../../lib/projects";
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
 
+type TokenPayload = {
+  email?: string;
+  role?: string;
+  exp?: number;
+  iat?: number;
+  [key: string]: unknown;
+};
+
 // Middleware function to verify authentication
 function verifyAuth(request: NextRequest) {
   const token = request.cookies.get("auth-token")?.value;
@@ -14,7 +22,7 @@ function verifyAuth(request: NextRequest) {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
 
     // Check if token is expired
     if (decoded.exp && decoded.exp < Math.floor(Date.now() / 1000)) {
@@ -23,6 +31,7 @@ function verifyAuth(request: NextRequest) {
 
     return decoded;
   } catch (error) {
+    console.error("verifyAuth error:", error);
     return null;
   }
 }
@@ -64,7 +73,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
+    type CreateBody = {
+      title: string;
+      category: string;
+      description: string;
+      imageUrl?: string;
+      status: 'draft' | 'active' | 'completed';
+      githubUrl: string;
+      liveUrl: string;
+      technologies?: string;
+    };
+    const body = (await request.json()) as CreateBody;
     const {
       title,
       category,
@@ -154,7 +173,18 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
+    type UpdateBody = {
+      id: number | string;
+      title: string;
+      category: string;
+      description: string;
+      imageUrl?: string;
+      status: 'draft' | 'active' | 'completed';
+      githubUrl: string;
+      liveUrl: string;
+      technologies?: string;
+    };
+    const body = (await request.json()) as UpdateBody;
     const {
       id,
       title,
@@ -202,7 +232,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Find and update project
-    const updatedProject = projectStore.update(parseInt(id), {
+    const updatedProject = projectStore.update(parseInt(String(id)), {
       title,
       category,
       description,

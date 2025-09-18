@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Mock database for messages - in production, use Prisma
-let messages = [
+const messages = [
   {
     id: 1,
     name: "John Doe",
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: newMessage,
-      message: 'Message sent successfully! I\'ll get back to you soon.'
+      message: 'Message sent successfully! I\u2019ll get back to you soon.'
     }, { status: 201 });
   } catch (error) {
     console.error('Messages POST error:', error);
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET - Fetch all messages (admin only)
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // In production, verify admin authentication here
     // For now, we'll allow GET requests for development
@@ -86,4 +86,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

@@ -9,7 +9,12 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status');
     const category = searchParams.get('category');
     
-    const filters: any = {};
+    type Filters = {
+      status?: string;
+      limit?: number;
+      category?: string;
+    };
+    const filters: Filters = {};
     if (status) filters.status = status;
     if (limit) filters.limit = parseInt(limit);
     if (category) filters.category = category;

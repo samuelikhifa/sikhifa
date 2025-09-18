@@ -150,7 +150,7 @@ export default function Home() {
                 href="/contact"
                 className="bg-purple-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-purple-700 transition-colors inline-block"
               >
-                Let's Talk
+                Let&apos;s Talk
               </a>
             </div>
           </div>
@@ -491,7 +491,7 @@ export default function Home() {
             </div>
             <div>
               <p className="text-white/80 text-lg">
-                I've had the privilege of working with amazing companies and
+                I&apos;ve had the privilege of working with amazing companies and
                 helping them achieve their design goals through innovative
                 solutions and creative thinking.
               </p>
@@ -512,9 +512,9 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-800 mb-4">
-                "Samuel is a creative perfectionist. He's like a frog in getting
+                &ldquo;Samuel is a creative perfectionist. He&apos;s like a frog in getting
                 better and project my team inspire about it. Sure to be next our
-                best friend."
+                best friend.&rdquo;
               </p>
               <div className="text-sm">
                 <div className="font-semibold text-gray-800">John Smith</div>
@@ -535,9 +535,9 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-800 mb-4">
-                "Great your service. Thank you for helping us develop a product
+                &ldquo;Great your service. Thank you for helping us develop a product
                 and work as an independent. Thank for the good service. Thanks
-                again."
+                again.&rdquo;
               </p>
               <div className="text-sm">
                 <div className="font-semibold text-gray-800">Martha Dale</div>
@@ -561,15 +561,15 @@ export default function Home() {
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Ready to bring your ideas to life with innovative design
-              solutions. Let's create something amazing together.
+              solutions. Let&apos;s create something amazing together.
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
             {/* ContactForm is currently disabled */}
             <ContactForm
-              title="Let's Start Your Project"
-              subtitle="Tell me about your vision and I'll help bring it to life"
+              title="Let&apos;s Start Your Project"
+              subtitle="Tell me about your vision and I&apos;ll help bring it to life"
             />
           </div>
         </div>
