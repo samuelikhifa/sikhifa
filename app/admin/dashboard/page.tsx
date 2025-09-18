@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -33,8 +33,13 @@ interface Project {
   createdAt: string;
 }
 
+type AdminUser = {
+  email: string;
+  role: 'admin' | string;
+};
+
 export default function AdminDashboard() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<AdminUser | null>(null);
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,23 +52,13 @@ export default function AdminDashboard() {
   const [imagePreview, setImagePreview] = useState<string>('');
   const router = useRouter();
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  useEffect(() => {
-    if (activeTab === 'projects') {
-      fetchProjects();
-    }
-  }, [activeTab]);
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       const response = await fetch('/api/auth/verify');
       const data = await response.json();
 
       if (data.authenticated) {
-        setUser(data.user);
+        setUser(data.user as AdminUser);
         fetchDashboardData();
       } else {
         router.push('/login');
@@ -72,7 +67,19 @@ export default function AdminDashboard() {
       console.error('Auth check failed:', error);
       router.push('/login');
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  useEffect(() => {
+    if (activeTab === 'projects') {
+      fetchProjects();
+    }
+  }, [activeTab]);
+
+  
 
   const fetchDashboardData = async () => {
     try {
@@ -167,9 +174,9 @@ export default function AdminDashboard() {
       } else {
         throw new Error(data.message);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Image upload error:', error);
-      const errorMessage = error.message || 'Failed to upload image. Please try again.';
+      const errorMessage = (error as { message?: string })?.message || 'Failed to upload image. Please try again.';
       alert(errorMessage);
       return '';
     } finally {
@@ -486,13 +493,16 @@ export default function AdminDashboard() {
                     href={project.liveUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="block h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden group-hover:opacity-90 transition-opacity"
+                    className="block h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden group-hover:opacity-90 transition-opacity relative"
                   >
                     {project.imageUrl ? (
-                      <img
+                      <Image
                         src={project.imageUrl}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        priority={false}
                       />
                     ) : (
                       <span className="text-gray-400 text-sm">No Image</span>
@@ -726,11 +736,14 @@ export default function AdminDashboard() {
                   <p className="text-xs text-gray-500 mt-1">Max size: 10MB. Supported: JPEG, PNG, WebP</p>
                 </div>
                 {imagePreview && (
-                  <div className="mt-2">
-                    <img
+                  <div className="mt-2 relative h-32">
+                    <Image
                       src={imagePreview}
                       alt="Preview"
-                      className="w-full h-32 object-cover rounded-lg border"
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover rounded-lg border"
                     />
                   </div>
                 )}

@@ -52,9 +52,9 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+
       <section className="bg-lime-500 relative overflow-hidden">
-        {/* Geometric patterns */}
+      
         <div className="absolute top-4 left-20 w-2 h-2 bg-white rounded-full opacity-60"></div>
         <div className="absolute top-8 left-32 w-1 h-1 bg-white rounded-full opacity-40"></div>
         <div className="absolute top-12 left-16 w-3 h-0.5 bg-white opacity-50"></div>
