@@ -3,6 +3,9 @@ import jwt from "jsonwebtoken";
 import cloudinary from "../../../../lib/cloudinary";
 import type { UploadApiErrorResponse, UploadApiResponse } from "cloudinary";
 
+// Ensure this route runs on the Node.js runtime (Buffer, streams, etc.)
+export const runtime = "nodejs";
+
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
 
@@ -78,6 +81,22 @@ export async function POST(request: NextRequest) {
           message: "File size too large. Maximum size is 10MB.",
         },
         { status: 400 }
+      );
+    }
+
+    // Validate Cloudinary environment variables
+    if (
+      !process.env.CLOUDINARY_CLOUD_NAME ||
+      !process.env.CLOUDINARY_API_KEY ||
+      !process.env.CLOUDINARY_API_SECRET
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Cloudinary configuration is missing. Please set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET.",
+        },
+        { status: 500 }
       );
     }
 
