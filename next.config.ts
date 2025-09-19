@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ["cloudinary"],
-  },
+  // Next 15+: use serverExternalPackages instead of experimental.serverComponentsExternalPackages
+  serverExternalPackages: ["cloudinary"],
   images: {
     remotePatterns: [
       {
@@ -13,11 +12,6 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-  },
-  api: {
-    bodyParser: {
-      sizeLimit: "10mb",
-    },
   },
 };
 

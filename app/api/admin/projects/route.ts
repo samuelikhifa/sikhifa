@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { projectStore } from "../../../../lib/projects";
+import type { Project } from "../../../../lib/projects";
 
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
@@ -118,7 +119,7 @@ export async function POST(request: NextRequest) {
     try {
       new URL(githubUrl);
       new URL(liveUrl);
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         {
           success: false,
@@ -129,7 +130,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create new project
-    const newProject = {
+    const newProject: Omit<Project, 'id'> = {
       title,
       category,
       description,
@@ -145,7 +146,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Persist and get project with generated id
-    const saved = projectStore.create(newProject as any);
+    const saved = projectStore.create(newProject);
 
     return NextResponse.json(
       {
@@ -224,7 +225,7 @@ export async function PUT(request: NextRequest) {
     try {
       new URL(githubUrl);
       new URL(liveUrl);
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         {
           success: false,

@@ -885,11 +885,14 @@ export default function AdminDashboard() {
                   <p className="text-xs text-gray-500 mt-1">Max size: 10MB. Supported: JPEG, PNG, WebP</p>
                 </div>
                 {imagePreview && (
-                  <div className="mt-2">
-                    <img
+                  <div className="mt-2 relative h-32">
+                    <Image
                       src={imagePreview}
                       alt="Preview"
-                      className="w-full h-32 object-cover rounded-lg border"
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover rounded-lg border"
                     />
                   </div>
                 )}

@@ -8,7 +8,6 @@ import {
   User,
   Trash2,
   CheckCircle,
-  Eye,
 } from "lucide-react";
 
 interface Message {
@@ -39,7 +38,7 @@ export default function MessagesPage() {
       } else {
         setError("Failed to fetch messages");
       }
-    } catch (error) {
+    } catch {
       setError("Failed to fetch messages");
     } finally {
       setLoading(false);

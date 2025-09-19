@@ -8,7 +8,6 @@ import {
   Phone,
   Linkedin,
   Github,
-  ArrowRight,
   Users,
   Zap,
   Heart,
