@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import cloudinary from "../../../../lib/cloudinary";
+import getCloudinary from "../../../../lib/cloudinary";
 import type { UploadApiErrorResponse, UploadApiResponse } from "cloudinary";
 
 // Ensure this route runs on the Node.js runtime (Buffer, streams, etc.)
@@ -102,6 +102,9 @@ export async function POST(request: NextRequest) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+
+    // Lazy initialize Cloudinary at runtime (avoids build-time env errors)
+    const cloudinary = getCloudinary();
 
     const result = await new Promise<UploadApiResponse>((resolve, reject) => {
       cloudinary.uploader
