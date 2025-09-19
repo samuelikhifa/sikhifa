@@ -1,11 +1,20 @@
 import fs from "fs";
 import path from "path";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+// Prefer writable temp directory in serverless/edge environments like Vercel
+// Allows overriding via DATA_DIR env. Defaults to /tmp in production, cwd/data in dev.
+const baseDir = process.env.DATA_DIR
+  || (process.env.VERCEL || process.env.NODE_ENV === 'production' ? '/tmp' : process.cwd());
+const DATA_DIR = path.join(baseDir, "data");
 
 // Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (e) {
+  // In environments where the FS is not writable, we'll operate in-memory only
+  console.warn(`storage: unable to ensure data directory at ${DATA_DIR}:`, e);
 }
 
 type IdType = number | string;
@@ -38,6 +47,7 @@ export class PersistentStorage<T extends { id: IdType }, K extends IdType = T["i
     try {
       fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2));
     } catch (error) {
+      // Log but do not throw; allow in-memory usage without persistence
       console.error(`Error saving data to ${this.filePath}:`, error);
     }
   }

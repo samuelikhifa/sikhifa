@@ -3,8 +3,16 @@ import jwt from "jsonwebtoken";
 import { projectStore } from "../../../../lib/projects";
 import type { Project } from "../../../../lib/projects";
 
-const JWT_SECRET =
-  process.env.JWT_SECRET || "your-secret-key-change-in-production";
+// Ensure this route runs on the Node.js runtime (fs required by storage)
+export const runtime = 'nodejs';
+// Disable caching and ensure dynamic execution (since we read/write filesystem)
+export const dynamic = 'force-dynamic';
+
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  console.error("JWT_SECRET environment variable is not set");
+}
 
 type TokenPayload = {
   email?: string;
@@ -19,6 +27,11 @@ function verifyAuth(request: NextRequest) {
   const token = request.cookies.get("auth-token")?.value;
 
   if (!token) {
+    return null;
+  }
+
+  if (!JWT_SECRET) {
+    console.error("JWT_SECRET is not configured");
     return null;
   }
 
@@ -40,23 +53,30 @@ function verifyAuth(request: NextRequest) {
 // GET - Fetch all projects
 export async function GET(request: NextRequest) {
   try {
+    console.log("GET /api/admin/projects - Starting request");
+    
     const user = verifyAuth(request);
+    console.log("User verification result:", user ? "authenticated" : "not authenticated");
 
     if (!user || user.role !== "admin") {
+      console.log("Authorization failed - user:", user);
       return NextResponse.json(
         { success: false, message: "Unauthorized access" },
         { status: 401 }
       );
     }
 
+    const projects = projectStore.getAll();
+    console.log("Retrieved projects count:", projects.length);
+    
     return NextResponse.json({
       success: true,
-      data: projectStore.getAll(),
+      data: projects,
     });
   } catch (error) {
     console.error("Projects GET error:", error);
     return NextResponse.json(
-      { success: false, message: "Internal server error" },
+      { success: false, message: "Internal server error", error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
@@ -65,9 +85,13 @@ export async function GET(request: NextRequest) {
 // POST - Create new project
 export async function POST(request: NextRequest) {
   try {
+    console.log("POST /api/admin/projects - Starting request");
+    
     const user = verifyAuth(request);
+    console.log("User verification result:", user ? "authenticated" : "not authenticated");
 
     if (!user || user.role !== "admin") {
+      console.log("Authorization failed - user:", user);
       return NextResponse.json(
         { success: false, message: "Unauthorized access" },
         { status: 401 }

@@ -52,6 +52,18 @@ export default function AdminDashboard() {
   const [imagePreview, setImagePreview] = useState<string>('');
   const router = useRouter();
 
+  // Safe JSON parser to avoid runtime errors when server returns HTML/text
+  const parseJsonSafe = async (response: Response) => {
+    const contentType = response.headers.get('content-type') || '';
+    const isJson = contentType.includes('application/json');
+    if (!isJson) return null;
+    try {
+      return await response.json();
+    } catch {
+      return null;
+    }
+  };
+
   const checkAuth = useCallback(async () => {
     try {
       const response = await fetch('/api/auth/verify', { credentials: 'include' });
@@ -84,12 +96,13 @@ export default function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const response = await fetch('/api/admin/dashboard', { credentials: 'include' });
-      const data = await response.json();
+      const data = await parseJsonSafe(response);
 
-      if (data.success) {
+      if (response.ok && data?.success) {
         setDashboardData(data.data);
       } else {
-        console.error('Failed to fetch dashboard data');
+        const msg = (data && data.message) || `${response.status} ${response.statusText}`;
+        console.error('Failed to fetch dashboard data:', msg);
       }
     } catch (error) {
       console.error('Dashboard fetch error:', error);
@@ -101,12 +114,13 @@ export default function AdminDashboard() {
   const fetchProjects = async () => {
     try {
       const response = await fetch('/api/admin/projects', { credentials: 'include' });
-      const data = await response.json();
+      const data = await parseJsonSafe(response);
 
-      if (data.success) {
+      if (response.ok && data?.success) {
         setProjects(data.data);
       } else {
-        console.error('Failed to fetch projects');
+        const msg = (data && data.message) || `${response.status} ${response.statusText}`;
+        console.error('Failed to fetch projects:', msg);
       }
     } catch (error) {
       console.error('Projects fetch error:', error);
@@ -210,16 +224,17 @@ export default function AdminDashboard() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseJsonSafe(response);
 
-      if (data.success) {
+      if (response.ok && data?.success) {
         setProjects([...projects, data.data]);
         setShowAddProject(false);
         // Reset form
         setSelectedImage(null);
         setImagePreview('');
       } else {
-        alert('Failed to add project: ' + data.message);
+        const msg = (data && data.message) || `${response.status} ${response.statusText}`;
+        alert('Failed to add project: ' + msg);
       }
     } catch (error) {
       console.error('Add project error:', error);
@@ -260,16 +275,17 @@ export default function AdminDashboard() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseJsonSafe(response);
 
-      if (data.success) {
+      if (response.ok && data?.success) {
         setProjects(projects.map(p => p.id === updatedProject.id ? data.data : p));
         setEditingProject(null);
         // Reset form
         setSelectedImage(null);
         setImagePreview('');
       } else {
-        alert('Failed to update project: ' + data.message);
+        const msg = (data && data.message) || `${response.status} ${response.statusText}`;
+        alert('Failed to update project: ' + msg);
       }
     } catch (error) {
       console.error('Update project error:', error);
@@ -288,12 +304,13 @@ export default function AdminDashboard() {
           credentials: 'include',
         });
 
-        const data = await response.json();
+        const data = await parseJsonSafe(response);
 
-        if (data.success) {
+        if (response.ok && data?.success) {
           setProjects(projects.filter(p => p.id !== id));
         } else {
-          alert('Failed to delete project: ' + data.message);
+          const msg = (data && data.message) || `${response.status} ${response.statusText}`;
+          alert('Failed to delete project: ' + msg);
         }
       } catch (error) {
         console.error('Delete project error:', error);
