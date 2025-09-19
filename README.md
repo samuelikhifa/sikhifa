@@ -1,4 +1,4 @@
-# R2 Ruman - UI/UX Designer Portfolio
+# SmauelIkhifa - Developer Portfolio
 
 A modern, responsive portfolio website built with Next.js and Tailwind CSS that showcases the work and expertise of R2 Ruman, a passionate UI/UX designer from Bangladesh.
 
