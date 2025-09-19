@@ -10,6 +10,8 @@ export interface Project {
   liveUrl?: string;
   technologies?: string[];
   status: "draft" | "active" | "completed";
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 // Default projects data
@@ -136,13 +138,13 @@ export const projectStore = {
   },
 
   // Create new project
-  // create: (project: Omit<Project, 'id' | 'createdAt'>) => {
-  //   const newProject: Omit<Project, 'id'> = {
-  //     ...project,
-  //     createdAt: new Date().toISOString().split('T')[0]
-  //   };
-  //   return storage.create(newProject);
-  // },
+  create: (project: Omit<Project, 'id'>) => {
+    const newProject: Omit<Project, 'id'> = {
+      ...project,
+      createdAt: (project as Project).createdAt || new Date().toISOString(),
+    };
+    return storage.create(newProject);
+  },
 
   // Update project
   update: (id: number, updates: Partial<Project>) => {

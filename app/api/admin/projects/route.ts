@@ -144,10 +144,13 @@ export async function POST(request: NextRequest) {
         : [],
     };
 
+    // Persist and get project with generated id
+    const saved = projectStore.create(newProject as any);
+
     return NextResponse.json(
       {
         success: true,
-        data: newProject,
+        data: saved,
         message: "Project created successfully",
       },
       { status: 201 }
