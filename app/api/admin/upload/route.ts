@@ -5,6 +5,9 @@ import type { UploadApiErrorResponse, UploadApiResponse } from "cloudinary";
 
 // Ensure this route runs on the Node.js runtime (Buffer, streams, etc.)
 export const runtime = "nodejs";
+// Prevent static optimization or build-time execution
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
