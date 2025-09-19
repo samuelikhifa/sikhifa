@@ -116,9 +116,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Upload error:", error);
-    return NextResponse.json(
-      { success: false, message: "Failed to upload image" },
-      { status: 500 }
-    );
+    const message =
+      (error as { message?: string })?.message ||
+      (typeof error === "string" ? error : "Failed to upload image");
+    return NextResponse.json({ success: false, message }, { status: 500 });
   }
 }

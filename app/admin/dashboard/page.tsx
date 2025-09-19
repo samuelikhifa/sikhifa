@@ -54,7 +54,7 @@ export default function AdminDashboard() {
 
   const checkAuth = useCallback(async () => {
     try {
-      const response = await fetch('/api/auth/verify');
+      const response = await fetch('/api/auth/verify', { credentials: 'include' });
       const data = await response.json();
 
       if (data.authenticated) {
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await fetch('/api/admin/dashboard');
+      const response = await fetch('/api/admin/dashboard', { credentials: 'include' });
       const data = await response.json();
 
       if (data.success) {
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch('/api/admin/projects');
+      const response = await fetch('/api/admin/projects', { credentials: 'include' });
       const data = await response.json();
 
       if (data.success) {
@@ -115,7 +115,7 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' });
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
       router.push('/login');
     } catch (error) {
       console.error('Logout error:', error);
@@ -164,6 +164,7 @@ export default function AdminDashboard() {
 
       const response = await fetch('/api/admin/upload', {
         method: 'POST',
+        credentials: 'include',
         body: formData,
       });
 
@@ -202,6 +203,7 @@ export default function AdminDashboard() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           ...project,
           imageUrl
@@ -251,6 +253,7 @@ export default function AdminDashboard() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           ...updatedProject,
           imageUrl
@@ -282,6 +285,7 @@ export default function AdminDashboard() {
       try {
         const response = await fetch(`/api/admin/projects?id=${id}`, {
           method: 'DELETE',
+          credentials: 'include',
         });
 
         const data = await response.json();
