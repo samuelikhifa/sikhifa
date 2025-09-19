@@ -1,13 +1,7 @@
 import { Metadata } from "next";
 import {
-  User,
-  Award,
+  
   Briefcase,
-  MapPin,
-  Mail,
-  Phone,
-  Linkedin,
-  Github,
   Users,
   Zap,
   Heart,
