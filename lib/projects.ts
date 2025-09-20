@@ -32,7 +32,7 @@ const defaultProjects: Project[] = [
   {
     id: 2,
     title: "Legacy54",
-    category: "Frontend Developer & SEO Specialist",
+    category: "Web Development & SEO Specialist",
     description:
       "Legacy54 Sports is a startup brand expanding across Africa and needed a strong digital footprint to match its growth ambitions. The goal was to create an online presence that would not only showcase the brand but also attract visibility through search engines. I designed and developed a modern website from scratch with a focus on speed, responsiveness, and user-friendly navigation. Alongside the build, I implemented a structured SEO strategy that improved visibility by about fifty percent. To ensure growth could be monitored effectively, I integrated Google Analytics, giving the team real-time insights into user behavior and site performance. The result was a professional and scalable website that positioned Legacy54 Sports as a credible and fast-growing brand. With stronger visibility and the right tools in place, the organization is now better equipped to expand its influence, engage communities, and attract new partners across Africa.",
     imageUrl:
@@ -41,6 +41,7 @@ const defaultProjects: Project[] = [
     liveUrl: "https://www.legacy54.com/",
     technologies: [
       "Vite",
+      "Figma",
       "TypeScript",
       "Tailwind CSS",
       "Google Analytics",
@@ -58,14 +59,14 @@ const defaultProjects: Project[] = [
     imageUrl: "/images/toyp.jpg",
     githubUrl: "https://github.com/samuelikhifa/JCIN-UNIBEN-TOYP25.git", 
     liveUrl: "https://toyp.jcinuniben.com/", 
-    technologies: ["HTML", "CSS", "JavaScript"],
-    status: "active",
+    technologies: ["HTML", "CSS", "JavaScript", "Figma"],
+    status: "completed",
     // createdAt: "2025-04-14"
   },
 
   {
     id: 4,
-    title: "TOYP UNIBEN",
+    title: "My portfolio",
     category: "Web Development",
     description:
       "My portfolio website was created as a platform to showcase my skills in frontend development, SEO, and UI/UX design. The goal was to build more than just a personal site — it had to reflect my ability to design clean interfaces, structure content for visibility, and deliver fast, responsive performance across all devices. The site was built with attention to detail in both design and functionality. From a UI/UX perspective, I focused on creating smooth navigation, clear project highlights, and responsive layouts that adapt to any screen size. On the frontend side, I applied best practices for performance, ensuring quick load times and seamless user interactions. To complement this, I implemented SEO strategies that make the site discoverable and well-positioned on search engines. The result is a professional, modern portfolio that not only presents my work but also demonstrates the very skills I offer. It serves as proof of my ability to design, build, and optimize digital products that balance aesthetics, usability, and visibility.",
@@ -76,12 +77,13 @@ const defaultProjects: Project[] = [
       "Next",
       "TypeScript",
       "Tailwind CSS",
+      "Figma",
       "Google Analytics",
       "SEO",
       
    
     ],
-    status: "active",
+    status: "completed",
   },
 
   // {
