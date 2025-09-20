@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Portfolio - R2 Ruman | UI/UX Design Projects',
-  description: 'Explore the comprehensive portfolio of R2 Ruman, featuring UI/UX design projects, web development work, and mobile app designs.',
-  keywords: 'Portfolio, UI/UX Design, Web Development, Mobile Apps, Design Projects, R2 Ruman',
+  title: 'Portfolio - Samuel Ikhifa | Web Developer & SEO Specialist',
+  description: 'Explore a passionate Web Developer and SEO Specialist from Nigeria. Discover my journey, skills, and approach to creating exceptional digital experiences.',
+  keywords: 'Portfolio, Samuel Ikhifa, Web Developer, SEO Specialist, Nigeria, Portfolio, Experience',
   openGraph: {
-    title: 'Portfolio - R2 Ruman | UI/UX Design Projects',
-    description: 'Explore the comprehensive portfolio of R2 Ruman, featuring UI/UX design projects, web development work, and mobile app designs.',
-    url: 'https://r2ruman.com/portfolio',
-    siteName: 'R2 Ruman Portfolio',
+    title: 'Portfolio - Samuel Ikhifa | Web Developer & SEO Specialist',
+    description: 'Explore the comprehensive portfolio of Samuel, featuring UI/UX design projects, web development work, and SEO Optimization.',
+    url: 'https://samuelikhifa.com/portfolio',
+    siteName: 'Samuel Portfolio',
     images: [
       {
         url: '/og-image.png',

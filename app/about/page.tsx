@@ -41,7 +41,7 @@ const skills = [
   { name: "SEO optimiztion", level: 75 },
   { name: "Performance Optimization ", level: 75 },
   { name: "UI/UX Design", level: 70 },
-  { name: "Prototyping", level: 92 },
+  { name: "Prototyping", level: 65 },
   // { name: "User Research", level: 60 },
   { name: "Version Control (Git/GitHub)", level: 75 },
 ];
@@ -116,7 +116,7 @@ export default function AboutPage() {
       {/* Story Section */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center text-center">
             <div>
               <h2 className="font-poppins text-4xl font-bold text-gray-900 mb-6">
                 My Story

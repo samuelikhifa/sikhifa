@@ -47,7 +47,7 @@ export default function Home() {
         return "from-blue-100 to-blue-200";
       case "Web Development":
         return "from-green-100 to-green-200";
-      case "App Design":
+      case "SEO":
         return "from-pink-100 to-purple-200";
       default:
         return "from-gray-100 to-gray-200";
@@ -61,7 +61,7 @@ export default function Home() {
         return "bg-blue-300";
       case "Web Development":
         return "bg-green-300";
-      case "App Design":
+      case "SEO":
         return "bg-pink-300";
       default:
         return "bg-gray-300";
@@ -75,7 +75,7 @@ export default function Home() {
         return "text-blue-600";
       case "Web Development":
         return "text-green-600";
-      case "App Design":
+      case "SEO":
         return "text-pink-600";
       default:
         return "text-gray-600";
@@ -501,7 +501,7 @@ export default function Home() {
             {/* Indeed Testimonial */}
             <div className="bg-white p-6 rounded-xl shadow-lg">
               <div className="flex items-center justify-between mb-4">
-                <div className="font-bold text-gray-800">Indeed</div>
+                <div className="font-bold text-gray-800">Legacy54</div>
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
                     <div
@@ -512,19 +512,17 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-800 mb-4">
-                &ldquo;Samuel is a creative perfectionist. He&apos;s like a frog in getting
-                better and project my team inspire about it. Sure to be next our
-                best friend.&rdquo;
+                &ldquo;Samuel brought Legacy54’s vision online with creativity and precision. The site reflects our brand as a growing sports company and is already boosting our visibility. Working with him has been a game-changer.&rdquo;
               </p>
               <div className="text-sm">
-                <div className="font-semibold text-gray-800">John Smith</div>
-                <div className="text-gray-600">CEO, Indeed</div>
+                <div className="font-semibold text-gray-800">Victor Olabisi</div>
+                <div className="text-gray-600">Founder, Legacy54</div>
               </div>
             </div>
             {/* Zensor Testimonial */}
             <div className="bg-white p-6 rounded-xl shadow-lg">
               <div className="flex items-center justify-between mb-4">
-                <div className="font-bold text-gray-800">Zensor</div>
+                <div className="font-bold text-gray-800">JCIN UNIBEN</div>
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
                     <div
@@ -535,13 +533,11 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-800 mb-4">
-                &ldquo;Great your service. Thank you for helping us develop a product
-                and work as an independent. Thank for the good service. Thanks
-                again.&rdquo;
+                &ldquo;Samuel excellently brought JCIN UNIBEN online for the first time. The website now gives us visibility, credibility, and a professional outlook that matches our impact. We appreciate his commitment and creativity.&rdquo;
               </p>
               <div className="text-sm">
-                <div className="font-semibold text-gray-800">Martha Dale</div>
-                <div className="text-gray-600">CEO, Zensor</div>
+                <div className="font-semibold text-gray-800">Praise Ewere</div>
+                <div className="text-gray-600">2025 President, JCIN UNIBEN</div>
               </div>
             </div>
           </div>

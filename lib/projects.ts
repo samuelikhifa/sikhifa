@@ -20,10 +20,10 @@ const defaultProjects: Project[] = [
     id: 1,
     title: "JCIN UNIBEN",
     category: "Web Development",
-    description: "",
+    description: "Before this project, JCIN UNIBEN had no website or online presence. Everything about the organization, including its mission, activities, and registration, was only available through social media or offline events. This limited visibility and made it difficult for students and potential partners to easily connect with the organization.The goal of the project was to create a modern and responsive website that improves credibility, makes information easy to access, and positions JCIN UNIBEN as a professional and impactful organization within the university and beyond. The site was designed to reflect the brand identity of JCIN UNIBEN, with simple navigation and a layout that communicates clearly to students, partners, and stakeholders.The process began with planning and wireframing, followed by building the main pages such as Home, About, Registration, and Contact. Development is ongoing, with efforts focused on ensuring the design is clean, responsive, and engaging. The website is also being prepared for SEO optimization and traffic tracking to grow visibility and reachSo far, the results have been significant. JCIN UNIBEN has moved from having no digital footprint to owning a dedicated website that is accessible globally. The organization now has a professional online presence that goes beyond social media, giving it credibility and opening new opportunities for engagement. Students and stakeholders can now easily learn about the organization and connect with its programs. The next steps will include adding more content, such as blogs, event highlights, and a registration portal, as well as introducing SEO strategies to make the site more discoverable. Continuous updates will ensure the platform grows with the organization’s activities and impact.",
     imageUrl:
-      "https://res.cloudinary.com/demo/image/upload/v1/portfolio-projects/sample-project-1",
-    githubUrl: "https://github.com/r2ruman/recent-experience",
+      "/images/jc.jpg",
+    githubUrl: "https://github.com/samuelikhifa/jcinnuniben.git",
     liveUrl: "https://www.jcinuniben.com/",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
     status: "active",
@@ -34,9 +34,9 @@ const defaultProjects: Project[] = [
     title: "Legacy54",
     category: "Frontend Developer & SEO Specialist",
     description:
-      "Building and optimizing Legacy54’s sports platform with a focus on responsive web development and SEO best practices, ensuring speed, performance, and discoverability while delivering a smooth user experience.",
+      "Legacy54 Sports is a startup brand expanding across Africa and needed a strong digital footprint to match its growth ambitions. The goal was to create an online presence that would not only showcase the brand but also attract visibility through search engines. I designed and developed a modern website from scratch with a focus on speed, responsiveness, and user-friendly navigation. Alongside the build, I implemented a structured SEO strategy that improved visibility by about fifty percent. To ensure growth could be monitored effectively, I integrated Google Analytics, giving the team real-time insights into user behavior and site performance. The result was a professional and scalable website that positioned Legacy54 Sports as a credible and fast-growing brand. With stronger visibility and the right tools in place, the organization is now better equipped to expand its influence, engage communities, and attract new partners across Africa.",
     imageUrl:
-      "https://res.cloudinary.com/demo/image/upload/v1/portfolio-projects/sample-project-2",
+      "/images/lega.jpg",
     githubUrl: "https://github.com/samuelikhifa/legae.git",
     liveUrl: "https://www.legacy54.com/",
     technologies: [
@@ -54,10 +54,10 @@ const defaultProjects: Project[] = [
     title: "TOYP UNIBEN",
     category: "Web Development",
     description:
-      "Designed and built the TOYP UNIBEN website with a clean, responsive layout, consistent branding, and smooth navigation to showcase outstanding young achievers.",
-    imageUrl: "/projects/toyp-uniben.png", // place your image in public/projects/ or import it
-    githubUrl: "https://github.com/samuelikhifa/toyp-uniben", // replace with your real repo if available
-    liveUrl: "https://toypuniben.com", // replace with actual live link
+      "TOYP UNIBEN (The Outstanding Young Persons Award) is an initiative by JCI UNIBEN that celebrates and recognizes young achievers across the University of Benin. For over a year, the award process relied heavily on Google Docs for nominations, which limited accessibility, reduced visibility, and created gaps in awareness among students. To address these challenges, I developed a dedicated website that reshaped the way the award was presented and managed. The new platform provided a centralized space for nominations, information about the award, and consistent updates. Designed with a clean and responsive interface, the website also reflected the values and credibility of JCI UNIBEN, making the award more visible and engaging to the student community. The impact of this transformation was immediate. The website not only streamlined the nomination process but also amplified the recognition of TOYP UNIBEN across campus. With improved accessibility and stronger digital presence, the award has become more widely known, well-regarded, and positioned as one of the most prestigious recognitions within the University of Benin.",
+    imageUrl: "/images/toyp.jpg",
+    githubUrl: "https://github.com/samuelikhifa/JCIN-UNIBEN-TOYP25.git", 
+    liveUrl: "https://toyp.jcinuniben.com/", 
     technologies: ["HTML", "CSS", "JavaScript"],
     status: "active",
     // createdAt: "2025-04-14"
@@ -65,22 +65,23 @@ const defaultProjects: Project[] = [
 
   {
     id: 4,
-    title: "TrashPoint Africa",
+    title: "TOYP UNIBEN",
     category: "Web Development",
     description:
-      "Led a team to build a recycling web app that incentivizes users to recycle waste for rewards. Delivered the MVP in 3 months, driving 500+ user sign-ups in the first month.",
-    imageUrl: "/projects/trashpoint-africa.png", // replace with your actual image path
-    githubUrl: "https://github.com/samuelikhifa/trashpoint-africa",
-    liveUrl: "https://trashpoint.africa/",
+      "My portfolio website was created as a platform to showcase my skills in frontend development, SEO, and UI/UX design. The goal was to build more than just a personal site — it had to reflect my ability to design clean interfaces, structure content for visibility, and deliver fast, responsive performance across all devices. The site was built with attention to detail in both design and functionality. From a UI/UX perspective, I focused on creating smooth navigation, clear project highlights, and responsive layouts that adapt to any screen size. On the frontend side, I applied best practices for performance, ensuring quick load times and seamless user interactions. To complement this, I implemented SEO strategies that make the site discoverable and well-positioned on search engines. The result is a professional, modern portfolio that not only presents my work but also demonstrates the very skills I offer. It serves as proof of my ability to design, build, and optimize digital products that balance aesthetics, usability, and visibility.",
+    imageUrl: "/images/zul.jpg",
+    githubUrl: "https://github.com/samuelikhifa/sikhifa.git",
+    liveUrl: "https://sikhifa.vercel.app/",
     technologies: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express.js",
-      "Team Leadership",
+      "Next",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Analytics",
+      "SEO",
+      
+   
     ],
     status: "active",
-    // createdAt: "2025-01-10"
   },
 
   // {
