@@ -140,7 +140,7 @@ export default function ProjectDetailPage() {
           {/* Project Header */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
             {/* Project Image */}
-            <div className="h-96 bg-gradient-to-br from-gray-100 to-gray-200 relative">
+            <div className="h-64 md:h-96 bg-gradient-to-br from-gray-100 to-gray-200 relative">
               {project.imageUrl ? (
                 <Image
                   src={project.imageUrl}
@@ -181,14 +181,13 @@ export default function ProjectDetailPage() {
 
             {/* Project Info */}
             <div className="p-8">
-              <div className="flex items-start justify-between mb-6">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6 mb-6">
                 <div className="flex-1">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-2">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
                     {project.title}
                   </h1>
-                  <p className="text-gray-600 text-lg">{project.description}</p>
                 </div>
-                <div className="flex space-x-3 ml-6">
+                <div className="flex items-center gap-3 md:ml-6">
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
@@ -221,7 +220,9 @@ export default function ProjectDetailPage() {
                   <div>
                     <p className="text-sm text-gray-600">Created</p>
                     <p className="font-semibold text-gray-900">
-                      {new Date(project.createdAt).toLocaleDateString()}
+                      {project.createdAt
+                        ? new Date(project.createdAt).toLocaleDateString()
+                        : "—"}
                     </p>
                   </div>
                 </div>

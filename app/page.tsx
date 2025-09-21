@@ -82,6 +82,13 @@ export default function Home() {
     }
   };
 
+  // Ensure we always get a valid URL string from either a string or string[]
+  const getFirstUrl = (u: string | string[] | undefined): string | null => {
+    if (!u) return null;
+    if (Array.isArray(u)) return u[0] && u[0].trim() ? u[0] : null;
+    return u.trim() ? u : null;
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -330,34 +337,23 @@ export default function Home() {
                         <h3 className="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
                           {project.title}
                         </h3>
-                        {(project.liveUrl && project.liveUrl.length > 0) ||
-                        (project.githubUrl && project.githubUrl.length > 0) ? (
+                        {getFirstUrl(project.liveUrl) ||
+                        getFirstUrl(project.githubUrl) ? (
                           <a
-                            href={
-                              project.liveUrl && project.liveUrl.length > 0
-                                ? project.liveUrl[0]
-                                : project.githubUrl &&
-                                  project.githubUrl.length > 0
-                                ? project.githubUrl[0]
-                                : "#"
-                            }
+                            href={getFirstUrl(project.liveUrl) || getFirstUrl(project.githubUrl) || "#"}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-purple-600 transition-colors"
-                            aria-label={
-                              project.liveUrl && project.liveUrl.length > 0
-                                ? "View Live Demo"
-                                : "View GitHub Repository"
-                            }
+                            aria-label={getFirstUrl(project.liveUrl) ? "View Live Demo" : "View GitHub Repository"}
                           ></a>
                         ) : null}
                       </div>
 
                       {/* Quick Links */}
                       <div className="flex items-center space-x-4 mt-2">
-                        {project.githubUrl && project.githubUrl.length > 0 && (
+                        {getFirstUrl(project.githubUrl) && (
                           <a
-                            href={project.githubUrl[0]}
+                            href={getFirstUrl(project.githubUrl) as string}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm text-gray-600 hover:text-gray-900 flex items-center transition-colors"
@@ -378,9 +374,9 @@ export default function Home() {
                             <span>Code</span>
                           </a>
                         )}
-                        {project.liveUrl && project.liveUrl.length > 0 && (
+                        {getFirstUrl(project.liveUrl) && (
                           <a
-                            href={project.liveUrl[0]}
+                            href={getFirstUrl(project.liveUrl) as string}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center transition-colors"

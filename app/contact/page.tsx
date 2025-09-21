@@ -49,7 +49,11 @@ const contactInfo = [
   },
 ];
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams: { sent?: string };
+}) {
   return (
     <div className="min-h-screen bg-gray-50">
 
@@ -83,6 +87,11 @@ export default function ContactPage() {
                 <h2 className="font-poppins text-2xl font-bold text-gray-900 mb-6">
                   Send me a message
                 </h2>
+                {searchParams?.sent === "1" && (
+                  <div className="mb-6 p-4 rounded-lg border border-green-200 bg-green-50 text-green-800">
+                    Thank you! Your message has been sent. I typically reply within 24 hours.
+                  </div>
+                )}
                 
                 <form 
                   action="https://formsubmit.co/ikhifasamuel12@gmail.com" 
@@ -92,7 +101,7 @@ export default function ContactPage() {
                   {/* Hidden FormSubmit configurations */}
                   <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio" />
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" value="https://samuelikhifa.com/contact/thank-you" />
+                  <input type="hidden" name="_next" value="https://samuelikhifa.com/contact?sent=1" />
                   <input type="hidden" name="_template" value="table" />
                   
                   {/* Name Field */}
