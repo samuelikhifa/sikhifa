@@ -15,8 +15,8 @@ interface Project {
   imageUrl: string;
   status: string;
   createdAt: string;
-  liveUrl: string | string;
-  githubUrl: string | string;
+  liveUrl: string | string[];
+  githubUrl: string | string[];
   technologies?: string[];
 }
 
@@ -80,6 +80,15 @@ export default function Home() {
       default:
         return "text-gray-600";
     }
+  };
+
+  // Helper function to get URL from string or array
+  const getUrlFromField = (urlField: string | string[]): string | undefined => {
+    if (!urlField) return undefined;
+    if (Array.isArray(urlField)) {
+      return urlField.length > 0 ? urlField[0] : undefined;
+    }
+    return urlField;
   };
 
   return (
@@ -298,7 +307,7 @@ export default function Home() {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </a>
+                </a>
             </div>
           </div>
 
@@ -319,158 +328,155 @@ export default function Home() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 gap-8">
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
-                >
-                  <div className="p-6">
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
-                          {project.title}
-                        </h3>
-                        {(project.liveUrl && project.liveUrl.length > 0) ||
-                        (project.githubUrl && project.githubUrl.length > 0) ? (
-                          <a
-                            href={
-                              project.liveUrl && project.liveUrl.length > 0
-                                ? project.liveUrl[0]
-                                : project.githubUrl &&
-                                  project.githubUrl.length > 0
-                                ? project.githubUrl[0]
-                                : "#"
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-purple-600 transition-colors"
-                            aria-label={
-                              project.liveUrl && project.liveUrl.length > 0
-                                ? "View Live Demo"
-                                : "View GitHub Repository"
-                            }
-                          ></a>
-                        ) : null}
-                      </div>
+              {projects.map((project) => {
+                const liveUrl = getUrlFromField(project.liveUrl);
+                const githubUrl = getUrlFromField(project.githubUrl);
+                
+                return (
+                  <div
+                    key={project.id}
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
+                  >
+                    <div className="p-6">
+                      <div className="mb-3">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
+                            {project.title}
+                          </h3>
+                          {(liveUrl || githubUrl) ? (
+                            <a
+                              href={liveUrl || githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-400 hover:text-purple-600 transition-colors"
+                              aria-label={
+                                liveUrl
+                                  ? "View Live Demo"
+                                  : "View GitHub Repository"
+                              }
+                            ></a>
+                          ) : null}
+                        </div>
 
-                      {/* Quick Links */}
-                      <div className="flex items-center space-x-4 mt-2">
-                        {project.githubUrl && project.githubUrl.length > 0 && (
-                          <a
-                            href={project.githubUrl[0]}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-gray-600 hover:text-gray-900 flex items-center transition-colors"
-                            aria-label="View on GitHub"
-                          >
-                            <svg
-                              className="w-4 h-4 mr-1"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
+                        {/* Quick Links */}
+                        <div className="flex items-center space-x-4 mt-2">
+                          {githubUrl && (
+                            <a
+                              href={githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-gray-600 hover:text-gray-900 flex items-center transition-colors"
+                              aria-label="View on GitHub"
                             >
-                              <path
-                                fillRule="evenodd"
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.21 22 16.416 22 12.017 22 6.484 17.522 2 12 2z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            <span>Code</span>
-                          </a>
-                        )}
-                        {project.liveUrl && project.liveUrl.length > 0 && (
-                          <a
-                            href={project.liveUrl[0]}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center transition-colors"
-                            aria-label="View Live Demo"
-                          >
-                            <span>Live Demo</span>
-                          </a>
-                        )}
+                              <svg
+                                className="w-4 h-4 mr-1"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.21 22 16.416 22 12.017 22 6.484 17.522 2 12 2z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                              <span>Code</span>
+                            </a>
+                          )}
+                          {liveUrl && (
+                            <a
+                              href={liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center transition-colors"
+                              aria-label="View Live Demo"
+                            >
+                              <span>Live Demo</span>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-purple-600 font-medium mb-4">
-                      {project.category}
-                    </p>
-                    <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                      {/* Loading state for project images */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                        <LoadingSpinner size="md" color="lime" />
-                      </div>
+                      <p className="text-purple-600 font-medium mb-4">
+                        {project.category}
+                      </p>
+                      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                        {/* Loading state for project images */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                          <LoadingSpinner size="md" color="lime" />
+                        </div>
 
-                      {/* Project Image with lazy loading */}
-                      {project.imageUrl ? (
-                        <Image
-                          src={project.imageUrl}
-                          alt={project.title}
-                          fill
-                          className="object-cover transition-opacity duration-300"
-                          loading="lazy"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          onLoad={(e) => {
-                            e.currentTarget.style.opacity = "1";
-                            e.currentTarget.previousElementSibling?.remove();
-                          }}
-                          onError={(e) => {
-                            e.currentTarget.style.opacity = "0";
-                            e.currentTarget.previousElementSibling?.remove();
-                          }}
-                          style={{ opacity: 0 }}
-                        />
-                      ) : (
-                        <div
-                          className={`w-full h-full bg-gradient-to-br ${getGradientColors(
-                            project.category
-                          )} flex items-center justify-center`}
-                        >
-                          <div className="text-center">
-                            <div
-                              className={`w-16 h-16 ${getIconColor(
-                                project.category
-                              )} rounded-lg mx-auto mb-2`}
-                            ></div>
-                            <div
-                              className={`${getTextColor(
-                                project.category
-                              )} font-medium`}
-                            >
-                              {project.category === "UI/UX Design"
-                                ? "Design Mockup"
-                                : project.category === "Web Development"
-                                ? "Web Platform"
-                                : project.category === "App Design"
-                                ? "App Mockup"
-                                : "Project Mockup"}
+                        {/* Project Image with lazy loading */}
+                        {project.imageUrl ? (
+                          <Image
+                            src={project.imageUrl}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-opacity duration-300"
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            onLoad={(e) => {
+                              e.currentTarget.style.opacity = "1";
+                              e.currentTarget.previousElementSibling?.remove();
+                            }}
+                            onError={(e) => {
+                              e.currentTarget.style.opacity = "0";
+                              e.currentTarget.previousElementSibling?.remove();
+                            }}
+                            style={{ opacity: 0 }}
+                          />
+                        ) : (
+                          <div
+                            className={`w-full h-full bg-gradient-to-br ${getGradientColors(
+                              project.category
+                            )} flex items-center justify-center`}
+                          >
+                            <div className="text-center">
+                              <div
+                                className={`w-16 h-16 ${getIconColor(
+                                  project.category
+                                )} rounded-lg mx-auto mb-2`}
+                              ></div>
+                              <div
+                                className={`${getTextColor(
+                                  project.category
+                                )} font-medium`}
+                              >
+                                {project.category === "UI/UX Design"
+                                  ? "Design Mockup"
+                                  : project.category === "Web Development"
+                                  ? "Web Platform"
+                                  : project.category === "App Design"
+                                  ? "App Mockup"
+                                  : "Project Mockup"}
+                              </div>
                             </div>
                           </div>
+                        )}
+                      </div>
+
+                      {/* Project description */}
+                      <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+                        {project.description}
+                      </p>
+
+                      {/* View Details and Live Project Links */}
+                      <div className="flex items-center justify-between">
+                        <Link
+                          href={`/projects/${project.id}`}
+                          className="text-purple-600 hover:text-purple-700 font-medium text-sm group-hover:underline transition-colors"
+                        >
+                          View Details
+                        </Link>
+                        <div className="flex space-x-2">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                          <span className="w-2 h-2 bg-lime-500 rounded-full"></span>
+                          <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
                         </div>
-                      )}
-                    </div>
-
-                    {/* Project description */}
-                    <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
-                      {project.description}
-                    </p>
-
-                    {/* View Details and Live Project Links */}
-                    <div className="flex items-center justify-between">
-                      <Link
-                        href={`/projects/${project.id}`}
-                        className="text-purple-600 hover:text-purple-700 font-medium text-sm group-hover:underline transition-colors"
-                      >
-                        View Details
-                      </Link>
-                      <div className="flex space-x-2">
-                        <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                        <span className="w-2 h-2 bg-lime-500 rounded-full"></span>
-                        <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
@@ -512,7 +518,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-800 mb-4">
-                &ldquo;Samuel brought Legacy54’s vision online with creativity and precision. The site reflects our brand as a growing sports company and is already boosting our visibility. Working with him has been a game-changer.&rdquo;
+                &ldquo;Samuel brought Legacy54's vision online with creativity and precision. The site reflects our brand as a growing sports company and is already boosting our visibility. Working with him has been a game-changer.&rdquo;
               </p>
               <div className="text-sm">
                 <div className="font-semibold text-gray-800">Victor Olabisi</div>
