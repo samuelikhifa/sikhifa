@@ -15,8 +15,8 @@ interface Project {
   imageUrl: string;
   status: string;
   createdAt: string;
-  liveUrl?: string | string[];
-  githubUrl?: string | string[];
+  liveUrl: string | string;
+  githubUrl: string | string;
   technologies?: string[];
 }
 
@@ -478,7 +478,7 @@ export default function Home() {
 
       {/* Trusted by Brands Section - keep as before */}
       <section className="bg-lime-500 py-16 relative">
-        {/* Geometric patterns */}
+      
         <div className="absolute top-20 left-8 w-2 h-2 bg-white rounded-full opacity-60"></div>
         <div className="absolute top-32 left-16 w-1 h-1 bg-white rounded-full opacity-40"></div>
 
