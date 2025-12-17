@@ -63,8 +63,8 @@ const defaultProjects: Project[] = [
     githubUrl: "https://github.com/samuelikhifa/obel.git",
     liveUrl: "https://www.osayanyoboltd.com/",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
-    status: "active",
-    // createdAt: "2025-01-15"
+    status: "completed",
+    // createdAt: "202-01-15"
   },
   {
     id: 4,
@@ -173,7 +173,11 @@ const defaultProjects: Project[] = [
 ];
 
 // Persistent storage instance
-const storage = new PersistentStorage<Project>("projects", defaultProjects);
+// const storage = new PersistentStorage<Project>("projects", defaultProjects);
+const storage = new PersistentStorage<Project>(
+  "projects_v2",
+  defaultProjects
+);
 
 export const projectStore = {
   // Get all projects
