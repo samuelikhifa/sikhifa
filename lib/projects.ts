@@ -16,21 +16,9 @@ export interface Project {
 
 // Default projects data
 const defaultProjects: Project[] = [
+
   {
     id: 1,
-    title: "JCIN UNIBEN",
-    category: "Web Development",
-    description: "Before this project, JCIN UNIBEN had no website or online presence. Everything about the organization, including its mission, activities, and registration, was only available through social media or offline events. This limited visibility and made it difficult for students and potential partners to easily connect with the organization.The goal of the project was to create a modern and responsive website that improves credibility, makes information easy to access, and positions JCIN UNIBEN as a professional and impactful organization within the university and beyond. The site was designed to reflect the brand identity of JCIN UNIBEN, with simple navigation and a layout that communicates clearly to students, partners, and stakeholders.The process began with planning and wireframing, followed by building the main pages such as Home, About, Registration, and Contact. Development is ongoing, with efforts focused on ensuring the design is clean, responsive, and engaging. The website is also being prepared for SEO optimization and traffic tracking to grow visibility and reachSo far, the results have been significant. JCIN UNIBEN has moved from having no digital footprint to owning a dedicated website that is accessible globally. The organization now has a professional online presence that goes beyond social media, giving it credibility and opening new opportunities for engagement. Students and stakeholders can now easily learn about the organization and connect with its programs. The next steps will include adding more content, such as blogs, event highlights, and a registration portal, as well as introducing SEO strategies to make the site more discoverable. Continuous updates will ensure the platform grows with the organization’s activities and impact.",
-    imageUrl:
-      "/images/jc.jpg",
-    githubUrl: "https://github.com/samuelikhifa/jcinnuniben.git",
-    liveUrl: "https://www.jcinuniben.com/",
-    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
-    status: "active",
-    // createdAt: "2025-01-15"
-  },
-  {
-    id: 2,
     title: "Legacy54",
     category: "Web Development & SEO Specialist",
     description:
@@ -50,8 +38,75 @@ const defaultProjects: Project[] = [
     status: "completed",
     // createdAt: "2025-09-08"
   },
+
+    {
+    id: 2,
+    title: "OSA Heritage Homes",
+    category: "Web Development",
+    description: "OSA Heritage Homes is a responsive website for a Texas-based senior care facility, designed to provide families and residents with comprehensive information about assisted living, memory care, and related services. The platform highlights the organization’s values, services, testimonials, and locations, while emphasizing accessibility, trust, and a compassionate care approach. The project involved designing a user-friendly interface, integrating interactive sections for services and testimonials, and ensuring a seamless browsing experience across devices.",
+    imageUrl:
+      "/images/osa.jpg",
+    githubUrl: "https://github.com/samuelikhifa/osaheristage.git",
+    liveUrl: "https://www.osaheritage.com/",
+    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
+    status: "active",
+    // createdAt: "2025-01-15"
+  },
+
   {
     id: 3,
+    title: "OBEL – Osayanyobo Brothers Enterprises Limited",
+    category: "Web Development",
+    description: "OBEL is a corporate website developed for Osayanyobo Brothers Enterprises Limited, an industrial services company operating across Nigeria and the United States. The platform presents OBEL’s expertise in mechanical construction, electrical installations, pipeline construction, facility maintenance, and procurement services. The website was designed to communicate trust, scale, and professionalism while guiding visitors through services, project processes, testimonials, and contact channels. Emphasis was placed on clarity, performance, and responsiveness for industrial and corporate audiences.",
+    imageUrl:
+      "/images/obel.jpg",
+    githubUrl: "https://github.com/samuelikhifa/obel.git",
+    liveUrl: "https://www.osayanyoboltd.com/",
+    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
+    status: "active",
+    // createdAt: "2025-01-15"
+  },
+    {
+    id: 4,
+    title: "GVANY Sales & Distribution Company Limited",
+    category: "Web Development",
+    description: "GVANY Sales & Distribution Company Limited is a Pan-African business website developed to showcase the company’s operations in marketing, distribution, logistics, real estate, and consultancy services across Africa. The platform highlights GVANY’s mission, vision, regional presence, and diverse service offerings, while positioning the brand as a reliable partner for businesses operating within African markets. The website focuses on clear information architecture, responsive design, and strong corporate branding to support credibility and growth.",
+    imageUrl:
+      "/images/gvany.jpg",
+    githubUrl: "https://github.com/samuelikhifa/gvany.git",
+    liveUrl: "https://www.gvany.com/",
+    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
+    status: "active",
+    // createdAt: "2025-01-15"
+  },
+      {
+    id: 5,
+    title: "Dr. Christos Etoka – Personal Brand & Mind Engineering Platform",
+    category: "Web Development",
+    description: "A personal brand and program-based website developed for Dr. Christos Etoka, an educator, psychologist, and thought leader in Mind Engineering and human capacity development. The platform showcases his philosophy, mentoring programs, executive retreats, books, testimonials, and consultation services. The website was designed to communicate authority, inspiration, and trust while guiding users toward engagement through bookings, subscriptions, and program enrollment. Strong emphasis was placed on storytelling, clarity, and responsive user experience.",
+    imageUrl:
+      "/images/chris.jpg",
+    githubUrl: "https://github.com/samuelikhifa/christos.git",
+    liveUrl: "https://drchristos.xmindengineering.org",
+    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
+    status: "active",
+    // createdAt: "2025-01-15"
+  },
+        {
+    id: 6,
+    title: "TPN School – Learning & Employment Platform",
+    category: "Web Development",
+    description: "TPN School is an ed-tech platform designed to help learners acquire in-demand skills and connect with employment opportunities in one place. The website features structured courses across multiple disciplines, instructor onboarding, and employer access to verified, job-ready talent. The platform was built with a focus on usability, scalability, and clear learning-to-employment pathways, ensuring a smooth experience for students, instructors, and employers.",
+    imageUrl:
+      "/images/tpn.jpg",
+    githubUrl: "https://github.com/samuelikhifa/tpn.git",
+    liveUrl: "https://tpnschool.com/home",
+    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
+    status: "active",
+    // createdAt: "2025-01-15"
+  },
+  {
+    id: 7,
     title: "TOYP UNIBEN",
     category: "Web Development",
     description:
@@ -64,8 +119,22 @@ const defaultProjects: Project[] = [
     // createdAt: "2025-04-14"
   },
 
+    {
+    id: 8,
+    title: "JCIN UNIBEN",
+    category: "Web Development",
+    description: "Before this project, JCIN UNIBEN had no website or online presence. Everything about the organization, including its mission, activities, and registration, was only available through social media or offline events. This limited visibility and made it difficult for students and potential partners to easily connect with the organization.The goal of the project was to create a modern and responsive website that improves credibility, makes information easy to access, and positions JCIN UNIBEN as a professional and impactful organization within the university and beyond. The site was designed to reflect the brand identity of JCIN UNIBEN, with simple navigation and a layout that communicates clearly to students, partners, and stakeholders.The process began with planning and wireframing, followed by building the main pages such as Home, About, Registration, and Contact. Development is ongoing, with efforts focused on ensuring the design is clean, responsive, and engaging. The website is also being prepared for SEO optimization and traffic tracking to grow visibility and reachSo far, the results have been significant. JCIN UNIBEN has moved from having no digital footprint to owning a dedicated website that is accessible globally. The organization now has a professional online presence that goes beyond social media, giving it credibility and opening new opportunities for engagement. Students and stakeholders can now easily learn about the organization and connect with its programs. The next steps will include adding more content, such as blogs, event highlights, and a registration portal, as well as introducing SEO strategies to make the site more discoverable. Continuous updates will ensure the platform grows with the organization’s activities and impact.",
+    imageUrl:
+      "/images/jc.jpg",
+    githubUrl: "https://github.com/samuelikhifa/jcinnuniben.git",
+    liveUrl: "https://www.jcinuniben.com/",
+    technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
+    status: "active",
+    // createdAt: "2025-01-15"
+  },
+
   {
-    id: 4,
+    id: 9,
     title: "My portfolio",
     category: "Web Development",
     description:

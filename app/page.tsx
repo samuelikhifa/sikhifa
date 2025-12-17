@@ -141,7 +141,7 @@ export default function Home() {
 
               {/* Main headline */}
               <h1 className="font-poppins text-3xl md:text-4xl lg:text-4xl font-bold text-purple-900 mb-6 leading-tight">
-                Frontend Developer
+                Web Developer
                 <br />& SEO Specialist
               </h1>
 
@@ -170,7 +170,7 @@ export default function Home() {
           {/* UI Card */}
           <div className="flex-1 bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4">
-              Frontend
+              Web Development
             </h2>
             <p className="text-gray-700 text-base md:text-lg">
               Building fast, responsive, and scalable websites that deliver
@@ -231,13 +231,13 @@ export default function Home() {
               <div className="w-16 h-16 bg-lime-200 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl text-purple-700">🎨</span>
               </div>
-              <h3 className="text-xl font-bold text-purple-900 mb-2">
+               <h3 className="text-xl font-bold text-purple-900 mb-2">
                 UI/UX Design
               </h3>
               <p className="text-gray-700">
                 Creative and user-centered interfaces for web & mobile
                 applications.
-              </p>
+              </p> 
             </div>
             {/* Service 2 */}
             <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
