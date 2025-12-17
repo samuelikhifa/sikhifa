@@ -39,7 +39,7 @@ const defaultProjects: Project[] = [
     // createdAt: "2025-09-08"
   },
 
-    {
+  {
     id: 2,
     title: "OSA Heritage Homes",
     category: "Web Development",
@@ -66,7 +66,7 @@ const defaultProjects: Project[] = [
     status: "active",
     // createdAt: "2025-01-15"
   },
-    {
+  {
     id: 4,
     title: "GVANY Sales & Distribution Company Limited",
     category: "Web Development",
@@ -76,10 +76,11 @@ const defaultProjects: Project[] = [
     githubUrl: "https://github.com/samuelikhifa/gvany.git",
     liveUrl: "https://www.gvany.com/",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
-    status: "active",
+    status: "completed",
+    
     // createdAt: "2025-01-15"
   },
-      {
+  {
     id: 5,
     title: "Dr. Christos Etoka – Personal Brand & Mind Engineering Platform",
     category: "Web Development",
@@ -89,10 +90,11 @@ const defaultProjects: Project[] = [
     githubUrl: "https://github.com/samuelikhifa/christos.git",
     liveUrl: "https://drchristos.xmindengineering.org",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
-    status: "active",
+    status: "completed",
+    
     // createdAt: "2025-01-15"
   },
-        {
+  {
     id: 6,
     title: "TPN School – Learning & Employment Platform",
     category: "Web Development",
@@ -102,7 +104,8 @@ const defaultProjects: Project[] = [
     githubUrl: "https://github.com/samuelikhifa/tpn.git",
     liveUrl: "https://tpnschool.com/home",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
-    status: "active",
+    status: "completed",
+  
     // createdAt: "2025-01-15"
   },
   {
@@ -112,14 +115,14 @@ const defaultProjects: Project[] = [
     description:
       "TOYP UNIBEN (The Outstanding Young Persons Award) is an initiative by JCI UNIBEN that celebrates and recognizes young achievers across the University of Benin. For over a year, the award process relied heavily on Google Docs for nominations, which limited accessibility, reduced visibility, and created gaps in awareness among students. To address these challenges, I developed a dedicated website that reshaped the way the award was presented and managed. The new platform provided a centralized space for nominations, information about the award, and consistent updates. Designed with a clean and responsive interface, the website also reflected the values and credibility of JCI UNIBEN, making the award more visible and engaging to the student community. The impact of this transformation was immediate. The website not only streamlined the nomination process but also amplified the recognition of TOYP UNIBEN across campus. With improved accessibility and stronger digital presence, the award has become more widely known, well-regarded, and positioned as one of the most prestigious recognitions within the University of Benin.",
     imageUrl: "/images/toyp.jpg",
-    githubUrl: "https://github.com/samuelikhifa/JCIN-UNIBEN-TOYP25.git", 
-    liveUrl: "https://toyp.jcinuniben.com/", 
+    githubUrl: "https://github.com/samuelikhifa/JCIN-UNIBEN-TOYP25.git",
+    liveUrl: "https://toyp.jcinuniben.com/",
     technologies: ["HTML", "CSS", "JavaScript", "Figma"],
     status: "completed",
     // createdAt: "2025-04-14"
   },
 
-    {
+  {
     id: 8,
     title: "JCIN UNIBEN",
     category: "Web Development",
@@ -149,8 +152,8 @@ const defaultProjects: Project[] = [
       "Figma",
       "Google Analytics",
       "SEO",
-      
-   
+
+
     ],
     status: "completed",
   },
