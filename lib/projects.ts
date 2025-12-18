@@ -47,7 +47,7 @@ const defaultProjects: Project[] = [
       "AFRIKA is a digital marketplace designed to showcase and promote indigenous African fashion to a global audience. The platform connects local artisans and vendors with customers by blending culture, commerce, and storytelling into a seamless shopping experience. The website highlights handcrafted native fashion, vendor stories, and cultural heritage while maintaining a modern, user- friendly interface.AFRIKA focuses on empowering artisans, preserving African traditions, and making authentic fashion easily accessible.",
     imageUrl:
       "/images/afr.jpg",
-    githubUrl: "https://github.com/samuelikhifa/afri.git",
+    githubUrl: "https://github.com/samuelikhifa/afr.git",
     liveUrl: "https://www.afrika.com.ng/",
     technologies: [
       "Vite",
