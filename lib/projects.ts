@@ -41,6 +41,28 @@ const defaultProjects: Project[] = [
 
   {
     id: 2,
+    title: "AFRIKA - Indigenous African Fashion Market Place",
+    category: "Web Development",
+    description:
+      "AFRIKA is a digital marketplace designed to showcase and promote indigenous African fashion to a global audience. The platform connects local artisans and vendors with customers by blending culture, commerce, and storytelling into a seamless shopping experience. The website highlights handcrafted native fashion, vendor stories, and cultural heritage while maintaining a modern, user- friendly interface.AFRIKA focuses on empowering artisans, preserving African traditions, and making authentic fashion easily accessible.",
+    imageUrl:
+      "/images/afr.jpg",
+    githubUrl: "https://github.com/samuelikhifa/afri.git",
+    liveUrl: "https://www.afrika.com.ng/",
+    technologies: [
+      "Vite",
+      "Figma",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Analytics",
+      "SEO",
+    ],
+    status: "completed",
+    // createdAt: "2025-09-08"
+  },
+
+  {
+    id: 2,
     title: "OSA Heritage Homes",
     category: "Web Development",
     description: "OSA Heritage Homes is a responsive website for a Texas-based senior care facility, designed to provide families and residents with comprehensive information about assisted living, memory care, and related services. The platform highlights the organization’s values, services, testimonials, and locations, while emphasizing accessibility, trust, and a compassionate care approach. The project involved designing a user-friendly interface, integrating interactive sections for services and testimonials, and ensuring a seamless browsing experience across devices.",
@@ -77,7 +99,7 @@ const defaultProjects: Project[] = [
     liveUrl: "https://www.gvany.com/",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
     status: "completed",
-    
+
     // createdAt: "2025-01-15"
   },
   {
@@ -91,7 +113,7 @@ const defaultProjects: Project[] = [
     liveUrl: "https://drchristos.xmindengineering.org",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
     status: "completed",
-    
+
     // createdAt: "2025-01-15"
   },
   {
@@ -105,7 +127,7 @@ const defaultProjects: Project[] = [
     liveUrl: "https://tpnschool.com/home",
     technologies: ["Vite", "TypeScript", "Tailwind CSS", "Figma", "SEO"],
     status: "completed",
-  
+
     // createdAt: "2025-01-15"
   },
   {
@@ -173,11 +195,11 @@ const defaultProjects: Project[] = [
 ];
 
 // Persistent storage instance
-// const storage = new PersistentStorage<Project>("projects", defaultProjects);
-const storage = new PersistentStorage<Project>(
-  "projects_v2",
-  defaultProjects
-);
+const storage = new PersistentStorage<Project>("projects", defaultProjects);
+// const storage = new PersistentStorage<Project>(
+//   "projects_v2",
+//   defaultProjects
+// );
 
 export const projectStore = {
   // Get all projects
